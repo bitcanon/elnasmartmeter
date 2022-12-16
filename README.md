@@ -15,7 +15,7 @@ This library is using the built-in API in the Elna device to gather information,
 ## Demo
 Here is a small command-line demo application showing the information that can be obtained by the library.
 
-![SmartMeter CLI Demo](https://github.com/bitcanon/elnasmartmeter/blob/main/docs/img/demo-cli-application.gif)
+![SmartMeter CLI Demo](https://github.com/bitcanon/elnasmartmeter/blob/main/docs/img/elna-cli-application.gif)
 
 Check out the source code to the demo here: [smartmeter-demo.py](https://github.com/bitcanon/elnasmartmeter/blob/master/examples/smartmeter-demo.py).
 
