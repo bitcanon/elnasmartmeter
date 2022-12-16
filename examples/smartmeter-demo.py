@@ -3,7 +3,7 @@ from elna import smartmeter
 
 hostname = '192.168.1.123'
 
-meter = smartmeter.Setup(hostname)
+meter = smartmeter.Connect(hostname)
 
 def main():
     ''' Application demo output. '''
