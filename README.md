@@ -20,6 +20,12 @@ Here is a small command-line demo application showing the information that can b
 Check out the source code to the demo here: [smartmeter-demo.py](https://github.com/bitcanon/elnasmartmeter/blob/master/examples/smartmeter-demo.py).
 
 ## Installation
+Setup the virtual environment:
+```
+virtualenv venv
+source venv/bin/activate
+```
+
 Install the latest version with `pip`:
 ```
 pip install elnasmartmeter
@@ -33,7 +39,7 @@ In order to use the library you need to know the IP address of the Elna device. 
 from elna import smartmeter
 
 # Connect the library to the Elna device
-meter = smartmeter.Connect('192.168.1.123')
+meter = smartmeter.Connect('192.168.0.10')
 
 # Get general information
 info = meter.get_info()
@@ -68,7 +74,7 @@ Also, the properties are easily accessed from the object:
 print(f"Model    : {info.model}")
 print(f"Firmware : {info.firmware}")
 ```
-The same goes for all object classes in the library: `Information`, `Electricity` and `Power`.
+The same goes for all object classes in the library: `Information`, `Electricity`, `Power` and `WLANInformation`.
 
 ## Access the Data
 There are two pieces of data that can be fetched with this library: general device `Information` and `Power` statistics.
@@ -142,8 +148,36 @@ electricity.exported.timestamp   # Returns a timestamp : '2022-12-31 13:37:00'
 ```
 > Check out the smartmeter demo at the top to try it out.
 
+### WLAN Information
+We can also get the WLAN information of the device by calling the `get_wlan_info()` method. The device can act as both a Wireless Client (Station) and an Access Point (AP) depending on if it has been connected to you WiFi network or not.
+
+```python
+wlan = meter.get_wlan_info()
+```
+
+Access the WLAN information via the class properties of the object:
+```python
+wlan.mode           # Returns the current WLAN mode
+wlan.ap_ssid        # Returns the Access Point SSID
+wlan.ap_key         # Returns the Access Point Password
+wlan.client_ssid    # Returns the SSID of the AP Elna is connected to
+wlan.join_status    # Returns the number of clients joined to the Elna AP
+wlan.mac            # Returns the MAC address currently in use
+wlan.ip             # Returns the IP address
+wlan.subnet         # Returns the Subnet mask
+wlan.gateway        # Returns the Default gateway
+wlan.dns            # Returns the Primary DNS server
+wlan.dnsalt         # Returns the Secondary DNS server
+wlan.n2g_id         # Returns the Net2Grid ID number
+wlan.sta_mac        # Returns the MAC address of the WLAN Station
+wlan.ap_mac         # Returns the MAC address of the Access Point
+wlan.eth_mac        # Returns the Ethernet MAC address (?)
+```
+> Note: The descriptions following the WLAN properties above are estimated guesses.
+
 ## Legal Disclaimer
 
 The product names, trademarks and registered trademarks in this repository, are property of their respective owners, and are used by the author for identification purposes only. The use of these names, trademarks and brands, do not imply endorsement or affiliation.
+
 
 
