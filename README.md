@@ -15,7 +15,7 @@ This library is using the built-in API in the Elna device to gather information,
 ## Demo
 Here is a small command-line demo application showing the information that can be obtained by the library.
 
-![SmartMeter CLI Demo](https://github.com/bitcanon/elnasmartmeter/blob/master/docs/img/demo-cli-application.gif)
+![SmartMeter CLI Demo](https://github.com/bitcanon/elnasmartmeter/blob/main/docs/img/demo-cli-application.gif)
 
 Check out the source code to the demo here: [smartmeter-demo.py](https://github.com/bitcanon/elnasmartmeter/blob/master/examples/smartmeter-demo.py).
 
@@ -145,4 +145,5 @@ electricity.exported.timestamp   # Returns a timestamp : '2022-12-31 13:37:00'
 ## Legal Disclaimer
 
 The product names, trademarks and registered trademarks in this repository, are property of their respective owners, and are used by the author for identification purposes only. The use of these names, trademarks and brands, do not imply endorsement or affiliation.
+
 
