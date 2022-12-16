@@ -28,6 +28,7 @@ class API(object):
         # API endpoints
         self.__url_info         = self.__url_base + '/info'
         self.__url_meter_now    = self.__url_base + '/meter/now'
+        self.__url_wlan_info    = self.__url_base + '/wlan/info'
 
         # Create a new session
         self.__session = requests.session()
@@ -81,12 +82,16 @@ class API(object):
         return self.__hostname
 
     def get_info(self):
-        """ Get the .... """
+        """ Get the general information about the device. """
         return self.__send_request(self.__url_info, request_type='GET')
 
     def get_meter_now(self):
-        """ Get the .... """
+        """ Get the power statistics of the device. """
         return self.__send_request(self.__url_meter_now, request_type='GET')
+
+    def get_wlan_info(self):
+        """ Get the WLAN information of the device. """
+        return self.__send_request(self.__url_wlan_info, request_type='GET')
 
     def send_get(self, url):
         """ Send a custom POST request. """

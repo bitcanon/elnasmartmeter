@@ -80,3 +80,28 @@ class Connect(object):
 
         return electricity
 
+    def get_wlan_info(self):
+        """ Fetch WLAN information from the device. """
+        info = self.__api.get_wlan_info()
+
+        new_info = WLANInformation(
+            ap_key=info['ap_key'],
+            ap_mac=info['ap_mac'],
+            ap_ssid=info['ap_ssid'],
+            client_ssid=info['client_ssid'],
+            dns=info['dns'],
+            dnsalt=info['dnsalt'],
+            eth_mac=info['eth_mac'],
+            gateway=info['gateway'],
+            ip=info['ip'],
+            join_status=info['join_status'],
+            mac=info['mac'],
+            mode=info['mode'],
+            n2g_id=info['n2g_id'],
+            sta_mac=info['sta_mac'],
+            subnet=info['subnet']
+        )
+
+        return new_info
+
+
