@@ -27,7 +27,7 @@ pip install elnasmartmeter
 
 ## Basics
 ### Setup
-In order to use the library you need to know the IP address of the Elna device. This is most easily found in the DHCP server of your router (or wherever you are running your DHCP server).
+In order to use the library you need to know the IP address of the Elna device. You can find it in the DHCP server of your router (or wherever you are running your DHCP server). The MAC address is printed on the back of the Elna device.
 
 ```python
 from elna import smartmeter
@@ -41,53 +41,64 @@ info = meter.get_info()
 # Get power readings
 electricity = meter.get_electricity()
 ```
-It's as simple as that to fetch the power consuption of your household. Next we will be looking at how to access the information.
+It's as simple as that to fetch the power consuption of your household. In a moment we will be looking at how to access the information.
 
 ### Exceptions
-All of the methods callable from the library will throw exceptions on failure. A full list of exceptions can be found [here](https://github.com/bitcanon/visonicalarm/blob/master/visonic/exceptions.py).
+All of the methods callable from the library will throw exceptions on failure. A full list of exceptions can be found [here](https://github.com/bitcanon/elnasmartmeter/blob/master/elnasmartmeter/exceptions.py).
 ```python
-from visonic.exceptions import *
+from elna import smartmeter
+from elna.exceptions import *
 ...
 try:
-    alarm.panel_login(panel_serial, user_code)
-except UserCodeIncorrectError as e:
+    info = meter.get_info()
+except NewConnectionError as e:
     print(e)
 ```
 
 ### Printing Objects and Properties
-The objects representing various entities in the alarm system can be output with the `print()` method for easy inspection of its properties.
+The objects representing various entities in the library can be output with the `print()` method for easy inspection of its properties.
 
 As an example, you can output the properties of a user object by passing it to the `print()` method:
 ```python
-print(user)
-# Output: <class 'visonic.classes.User'>: {'id': 1, 'name': 'John Doe', 'email': 'john@doe.com', 'partitions': [1, 2, 3, 4, 5]}
+print(info)
+# Output: <class 'elna.classes.Information'>: {'id': '01ab:0200:00cd:03ef', 'manufacturer': 'NET2GRID', 'model': 'SBWF4602', 'firmware': '1.7.14', 'hardware': 1, 'batch': 'HMX-P1D-220921'}
 ```
 Also, the properties are easily accessed from the object:
 ```python
-print('User ID:    ' + str(user.id))
-print('User Name:  ' + user.name)
-print('Email:      ' + user.email)
-print('Partitions: ' + str(user.partitions))
+print(f"Model    : {info.model}")
+print(f"Firmware : {info.firmware}")
 ```
-This is the same for all object classes in the library: Users, devices, events, locations, troubles, and so on...
+The same goes for all object classes in the library: `Information`, `Electricity` and `Power`.
 
-## Arming and Disarming
-There are two ways to arm your alarm system.
-- **Arm Home:** This will arm your perimeter protection (often doors and windows). You can still move around inside the house.
-- **Arm Away:** This will arm the entire alarm system (doors, windows, motion, cameras, etc). Moving around in the house will trigger the alarm to go off.
+## Access the Data
+There are two pieces of data that can be fetched with this library: general device `information` and `power` usage statistics.
 
-### Arm Home
-To arm the alarm system in *home mode* just call the `arm_home()` method. 
+### Device Information
+To get the general device information we just call the `get_info()` method.
 
 ```python
-alarm.arm_home()
+info = meter.get_info()
 ```
-When using a multi partition alarm system, just pass the partition ID as an argument to the `arm_home()` method.
+Access the values via the class properties:
 ```python
-alarm.arm_home(partition=2)
+info.id
+info.manufacturer
+info.model
+info.firmware
+info.hardware
+info.batch
+```
+### Power Readings
+The get the power readings we call the `get_electricity()` method. These readings are a bit more complex since the information gathered from the Elna device is divided in to sub-classes, but it's not that complicated:
+
+```python
+electricity = meter.get_electricity()
 ```
 
-Poll the `state` property of your partition in the `get_status()` method to watch the state changing.
-```python
-alarm.get_status().partitions[0].state  # Output: 'HOME'
-```
+#### Now
+Current power consumption.
+
+#### Min
+Lowest recorded power..
+
+
