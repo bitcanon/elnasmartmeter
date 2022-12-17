@@ -12,12 +12,20 @@ This library is using the built-in API inside the Elna device to gather informat
 
 > Elna is based on hardware from Net2Grid so it's probably also compatible with more devices from the Net2Grid family. Any feedback is welcome.
 
-## 🕹 Demo
+## 🕹 Demo Applications
+### Demo 1: Example Output
 Here is a small command-line demo application showing the information that can be obtained from the device.
 
 ![SmartMeter CLI Demo](https://github.com/bitcanon/elnasmartmeter/blob/main/docs/img/elna-cli-application.gif)
 
 Check out the source code to the demo here: [smartmeter-demo.py](https://github.com/bitcanon/elnasmartmeter/blob/master/examples/smartmeter-demo.py).
+
+### Demo 2: Power Ping
+This is a more real life demo application with a lot of resemblance with a well known CLI application. It will check your momentary power consumption (mpc) and output it to the console. Once CTRL+C is pressed it shows the calculated minimum, maximum and average power consumption as well as the round trip time of the packets sent to Elna, and more.
+
+![powerping CLI demo](https://github.com/bitcanon/elnasmartmeter/blob/main/docs/img/demo-cli-powerping.gif)
+
+The source code is available here: [powerping-demo.py](https://github.com/bitcanon/elnasmartmeter/blob/main/examples/powerping-demo.py).
 
 ## 💻 Installation
 Setup the virtual environment:
@@ -176,6 +184,7 @@ wlan.eth_mac        # Returns the Ethernet MAC address (?)
 ## ⚠ Legal Disclaimer
 
 The product names, trademarks and registered trademarks in this repository, are property of their respective owners, and are used by the author for identification purposes only. The use of these names, trademarks and brands, do not imply endorsement or affiliation.
+
 
 
 
