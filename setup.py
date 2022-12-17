@@ -8,7 +8,7 @@ setuptools.setup(
     version='1.1.1',
     author='Mikael Schultz',
     author_email='bitcanon@pm.me',
-    description='A simple library for the E.ON Elna API written in Python 3.',
+    description='A simple library for the E.ON Elna built-in API written in Python 3.',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/bitcanon/elnasmartmeter',

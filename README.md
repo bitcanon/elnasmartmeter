@@ -5,21 +5,21 @@ Hi and welcome! Click the button below if you enjoy this library and want to sup
 
 >Needless to say, this is completely voluntary.
 
-## Introduction
-A simple library for the [E.ON Elna](https://www.eon.se/kundservice/vara-tjanster/e-on-elna) API written in Python 3. Elna is a smart power meter that is plugged in to the HAN (Home Area Network) port of the electricity meter using an RJ12 connector. 
+## 🤓 Introduction
+A simple library for the [E.ON Elna](https://www.eon.se/kundservice/vara-tjanster/e-on-elna) built-in API written in Python 3. Elna is a smart power metering device plugged in to the HAN (Home Area Network) port of the electricity meter using an RJ12 connector. 
 
-This library is using the built-in API in the Elna device to gather information, about your power **consumption** and/or **production**, directly from the device itself.
+This library is using the built-in API inside the Elna device to gather information, about your power **consumption** and/or **production**, directly from the device itself.
 
 > Elna is based on hardware from Net2Grid so it's probably also compatible with more devices from the Net2Grid family. Any feedback is welcome.
 
-## Demo
-Here is a small command-line demo application showing the information that can be obtained by the library.
+## 🕹 Demo
+Here is a small command-line demo application showing the information that can be obtained from the device.
 
 ![SmartMeter CLI Demo](https://github.com/bitcanon/elnasmartmeter/blob/main/docs/img/elna-cli-application.gif)
 
 Check out the source code to the demo here: [smartmeter-demo.py](https://github.com/bitcanon/elnasmartmeter/blob/master/examples/smartmeter-demo.py).
 
-## Installation
+## 💻 Installation
 Setup the virtual environment:
 ```
 virtualenv venv
@@ -31,7 +31,7 @@ Install the latest version with `pip`:
 pip install elnasmartmeter
 ```
 
-## Basics
+## 📚 Basics
 ### Setup
 In order to use the library you need to know the IP address of the Elna device. You can find it in the DHCP server of your router (or wherever you are running your DHCP server). The MAC address of Elna is printed on the back of the device.
 
@@ -46,6 +46,9 @@ info = meter.get_info()
 
 # Get power readings
 electricity = meter.get_electricity()
+
+# Get WLAN information
+wlan = meter.get_wlan_info()
 ```
 It's as simple as that to fetch the power consuption/production of your household. In a moment we will be looking at how to access the information via the `info` and `electricity` objects.
 
@@ -69,14 +72,9 @@ As an example, you can output the properties of an `Information` object by passi
 print(info)
 # Output: <class 'elna.classes.Information'>: {'id': '01ab:0200:00cd:03ef', 'manufacturer': 'NET2GRID', 'model': 'SBWF4602', 'firmware': '1.7.14', 'hardware': 1, 'batch': 'HMX-P0D-123456'}
 ```
-Also, the properties are easily accessed from the object:
-```python
-print(f"Model    : {info.model}")
-print(f"Firmware : {info.firmware}")
-```
-The same goes for all object classes in the library: `Information`, `Electricity`, `Power` and `WLANInformation`.
+The same goes for all classes in the library: `Information`, `Electricity`, `Power` and `WLANInformation`.
 
-## Access the Data
+## 💾 Access the Data
 There are two pieces of data that can be fetched with this library: general device `Information` and `Power` statistics.
 
 ### Device Information
@@ -175,7 +173,7 @@ wlan.eth_mac        # Returns the Ethernet MAC address (?)
 ```
 > Note: The descriptions following the WLAN properties above are estimated guesses.
 
-## Legal Disclaimer
+## ⚠ Legal Disclaimer
 
 The product names, trademarks and registered trademarks in this repository, are property of their respective owners, and are used by the author for identification purposes only. The use of these names, trademarks and brands, do not imply endorsement or affiliation.
 
