@@ -1,7 +1,7 @@
 # 😡 Important Note 😡
 This library only works with firmare version 1.7.14 or lower.
 
-In newer firmware versions Eon has disabled the local API and made this library obsolete, **BIG** thanks to Eon for that! 🤬
+In newer firmware versions Eon has disabled the local API and made this library obsolete, **BIG** thanks to Eon! 🤬
 
 Read more in issue https://github.com/bitcanon/elnasmartmeter/issues/1
 
